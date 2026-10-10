@@ -51,9 +51,16 @@ MVP complete and running locally. Frontend: http://localhost:5173 · Backend: ht
 - Login page shows the demo-account hint only while demo accounts exist (`demoAccounts` flag in `/api/health`).
 - New test `demo-clear.test.js`: **33/33 tests pass**.
 
+## Update — deployed
+
+- Frontend live on Vercel: https://my-project-spj3.vercel.app
+- Backend live on Render: https://kerakbolsa-api.onrender.com (`/api/health` → `"mode": "atlas"`)
+- Verified on the live site: pages and client routes (incl. refresh), API through the Vercel proxy, demo photos and hero images (0 broken images), demo login with a Secure httpOnly cookie, personal homepage, product page — no console errors.
+- Fixes for deployment: hero/login images served from the frontend; Render blueprint; `mongodb-memory-server` moved to devDependencies; placeholder Cloudinary values (`none`) treated as not configured.
+
 ## Known problems / limitations
 
-- Cloudinary not configured — uploads stored locally in `backend/uploads`.
+- Cloudinary not configured — user uploads are stored on the server disk (lost when the free Render instance restarts).
 - Identity verification is simulated (clearly labelled DEMO).
 - No online payment, reviews or chat (out of MVP scope).
 
