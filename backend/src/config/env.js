@@ -10,6 +10,14 @@ dotenv.config({ path: path.join(BACKEND_ROOT, '.env'), quiet: true });
 
 const DEV_JWT_SECRET = 'dev-only-insecure-secret-change-me-0123456789';
 
+// Hosting dashboards sometimes force a value; treat placeholders as "not set".
+const optionalSecret = z
+  .string()
+  .trim()
+  .optional()
+  .default('')
+  .transform((v) => (['none', 'null', '-', 'n/a'].includes(v.toLowerCase()) ? '' : v));
+
 const schema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.coerce.number().int().positive().default(5000),
@@ -18,9 +26,9 @@ const schema = z.object({
   JWT_SECRET: z.string().min(32, 'JWT_SECRET must be at least 32 characters').optional(),
   JWT_EXPIRES_IN: z.string().default('7d'),
   CLIENT_ORIGIN: z.string().default('http://localhost:5173'),
-  CLOUDINARY_CLOUD_NAME: z.string().optional().default(''),
-  CLOUDINARY_API_KEY: z.string().optional().default(''),
-  CLOUDINARY_API_SECRET: z.string().optional().default(''),
+  CLOUDINARY_CLOUD_NAME: optionalSecret,
+  CLOUDINARY_API_KEY: optionalSecret,
+  CLOUDINARY_API_SECRET: optionalSecret,
   DEMO_VERIFICATION: z
     .enum(['true', 'false'])
     .default('true')
