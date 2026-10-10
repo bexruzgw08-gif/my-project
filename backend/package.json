@@ -1,0 +1,35 @@
+{
+  "name": "kerakbolsa-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KerakBo'lsa rental marketplace — REST API",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch-path=src src/server.js",
+    "start": "node src/server.js",
+    "seed": "node src/seed/run.js",
+    "test": "node --test --test-concurrency=1 \"tests/**/*.test.js\""
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.11.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.1",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb-memory-server": "^10.4.3",
+    "mongoose": "^8.24.5",
+    "multer": "^2.4.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "supertest": "^7.3.1"
+  }
+}

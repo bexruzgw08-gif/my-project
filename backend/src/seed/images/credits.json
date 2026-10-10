@@ -1,0 +1,356 @@
+{
+  "drill": [
+    {
+      "file": "drill-1.jpg",
+      "creator": "HomeSpot HQ",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/86639298@N02/8559707469"
+    },
+    {
+      "file": "drill-2.jpg",
+      "creator": "dvanzuijlekom",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/52365139@N05/8502088493"
+    }
+  ],
+  "hammerdrill": [
+    {
+      "file": "hammerdrill-1.jpg",
+      "creator": "toolstop",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/42408834@N06/4008054396"
+    },
+    {
+      "file": "hammerdrill-2.jpg",
+      "creator": "toolstop",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/42408834@N06/5011437838"
+    }
+  ],
+  "ladder": [
+    {
+      "file": "ladder-1.jpg",
+      "creator": "chris.rycroft",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/193316968@N06/52297534506"
+    },
+    {
+      "file": "ladder-2.jpg",
+      "creator": "garryknight",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/8176740@N05/19409847352"
+    }
+  ],
+  "grinder": [
+    {
+      "file": "grinder-1.jpg",
+      "creator": "Public Domain Photos",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/28958738@N06/8410007770"
+    },
+    {
+      "file": "grinder-2.jpg",
+      "creator": "toolstop",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/42408834@N06/4071725314"
+    }
+  ],
+  "camera": [
+    {
+      "file": "camera-1.jpg",
+      "creator": "Janitors",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/65265630@N03/14561726934"
+    },
+    {
+      "file": "camera-2.jpg",
+      "creator": "Janitors",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/65265630@N03/14376762118"
+    },
+    {
+      "file": "camera-3.jpg",
+      "creator": "Janitors",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/65265630@N03/14561734224"
+    }
+  ],
+  "projector": [
+    {
+      "file": "projector-1.jpg",
+      "creator": "billjacobus1",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/67513462@N00/4770258409"
+    },
+    {
+      "file": "projector-2.jpg",
+      "creator": "billjacobus1",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/67513462@N00/4770257657"
+    },
+    {
+      "file": "projector-3.jpg",
+      "creator": "Jemimus",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/12967790@N00/4759235233"
+    }
+  ],
+  "drone": [
+    {
+      "file": "drone-1.jpg",
+      "creator": "MIKI Yoshihito. (#mikiyoshihito)",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/7940758@N07/52280607504"
+    },
+    {
+      "file": "drone-2.jpg",
+      "creator": "Andri Koolme",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/125858571@N04/23076577603"
+    },
+    {
+      "file": "drone-3.jpg",
+      "creator": "Andri Koolme",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/125858571@N04/23075494094"
+    }
+  ],
+  "console": [
+    {
+      "file": "console-1.jpg",
+      "creator": "DeclanTM",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/36006949@N00/2536893598"
+    },
+    {
+      "file": "console-2.jpg",
+      "creator": "włodi",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/19716902@N00/2490674642"
+    }
+  ],
+  "mower": [
+    {
+      "file": "mower-1.jpg",
+      "creator": "zenmasterdod",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/10415715@N02/3846024865"
+    },
+    {
+      "file": "mower-2.jpg",
+      "creator": "Rennett Stowe",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/10393601@N08/2835154848"
+    }
+  ],
+  "washer": [
+    {
+      "file": "washer-1.jpg",
+      "creator": "fukapon",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/37259551@N00/9591628948"
+    },
+    {
+      "file": "washer-2.jpg",
+      "creator": "zeevveez",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/29001414@N00/21016896042"
+    }
+  ],
+  "vacuum": [
+    {
+      "file": "vacuum-1.jpg",
+      "creator": "twicepix",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/30713600@N00/2186872393"
+    },
+    {
+      "file": "vacuum-2.jpg",
+      "creator": "nist6ss",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/53771866@N05/6189117730"
+    }
+  ],
+  "trimmer": [
+    {
+      "file": "trimmer-1.jpg",
+      "creator": "toolstop",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/42408834@N06/4887107211"
+    },
+    {
+      "file": "trimmer-2.jpg",
+      "creator": "toolstop",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/42408834@N06/4887102693"
+    }
+  ],
+  "eventtent": [
+    {
+      "file": "eventtent-1.jpg",
+      "creator": "selmerv",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/37022102@N00/555888736"
+    },
+    {
+      "file": "eventtent-2.jpg",
+      "creator": "sakamencho",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/71878037@N00/5952667294"
+    },
+    {
+      "file": "eventtent-3.jpg",
+      "creator": "dlz design",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/32912201@N07/3803603460"
+    }
+  ],
+  "speaker": [
+    {
+      "file": "speaker-1.jpg",
+      "creator": "robinsonsmay",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/25103209@N06/2886803446"
+    }
+  ],
+  "chairs": [
+    {
+      "file": "chairs-1.jpg",
+      "creator": "Ron Cogswell",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/22711505@N05/14192079966"
+    },
+    {
+      "file": "chairs-2.jpg",
+      "creator": "orphanjones",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/97299052@N00/4213287307"
+    }
+  ],
+  "lights": [
+    {
+      "file": "lights-1.jpg",
+      "creator": "Wonderlane",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/71401718@N00/2982873133"
+    },
+    {
+      "file": "lights-2.jpg",
+      "creator": "Unlisted Sightings",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/8804814@N08/2166923664"
+    }
+  ],
+  "campingtent": [
+    {
+      "file": "campingtent-1.jpg",
+      "creator": "Dave Dugdale",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/37387065@N05/9031890963"
+    },
+    {
+      "file": "campingtent-2.jpg",
+      "creator": "Julian Bialowas",
+      "license": "CC CC0 1.0",
+      "sourceUrl": "https://stocksnap.io/photo/camping-tent-177F2EBDDC"
+    },
+    {
+      "file": "campingtent-3.jpg",
+      "creator": "MattHurst",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/22937701@N00/5939450984"
+    }
+  ],
+  "bike": [
+    {
+      "file": "bike-1.jpg",
+      "creator": "jtbradford",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/99623414@N00/6125467033"
+    },
+    {
+      "file": "bike-2.jpg",
+      "creator": "tonylanciabeta",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/88589821@N00/2836363716"
+    }
+  ],
+  "skis": [
+    {
+      "file": "skis-1.jpg",
+      "creator": "Alpes de Haute Provence",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/45354537@N03/26526392205"
+    },
+    {
+      "file": "skis-2.jpg",
+      "creator": "Forest Service Pacific Northwest Region",
+      "license": "CC PDM 1.0",
+      "sourceUrl": "https://www.flickr.com/photos/135886671@N08/47159922042"
+    }
+  ],
+  "suitcase": [
+    {
+      "file": "suitcase-1.jpg",
+      "creator": "Stein Magne",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/14718242@N04/9510480571"
+    },
+    {
+      "file": "suitcase-2.jpg",
+      "creator": "TravelCollector",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/95588592@N03/8721821174"
+    }
+  ],
+  "scooter": [
+    {
+      "file": "scooter-1.jpg",
+      "creator": "Ivan Radic",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/26344495@N05/49023785138"
+    },
+    {
+      "file": "scooter-2.jpg",
+      "creator": "West Midlands Fire Service",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/80314516@N06/51321850213"
+    }
+  ],
+  "generator": [
+    {
+      "file": "generator-1.jpg",
+      "creator": "QuietHut",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/154900222@N05/46397191342"
+    }
+  ],
+  "handtruck": [
+    {
+      "file": "handtruck-1.jpg",
+      "creator": "colmmcsky",
+      "license": "CC BY-SA 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/8166986@N04/7694674026"
+    },
+    {
+      "file": "handtruck-2.jpg",
+      "creator": "pasa47",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/53301297@N00/16071815470"
+    }
+  ],
+  "ebike": [
+    {
+      "file": "ebike-1.jpg",
+      "creator": "Janitors",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/65265630@N03/14694160596"
+    },
+    {
+      "file": "ebike-2.jpg",
+      "creator": "Janitors",
+      "license": "CC BY 2.0",
+      "sourceUrl": "https://www.flickr.com/photos/65265630@N03/14530517918"
+    }
+  ]
+}

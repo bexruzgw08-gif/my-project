@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Environment files (secrets) — only .env.example is committed
+.env
+.env.*
+!.env.example
+
+# Local development database & uploads (never commit)
+backend/.data/
+backend/uploads/
+
+# Build output
+frontend/dist/
+
+# Logs & OS files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
