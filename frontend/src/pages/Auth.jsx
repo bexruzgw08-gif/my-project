@@ -32,7 +32,7 @@ function AuthShell({ title, subtitle, children }) {
           </ul>
           <div className="relative mt-10 grid grid-cols-3 gap-3">
             {['projector-1', 'bike-1', 'eventtent-1'].map((img) => (
-              <img key={img} src={`/seed-images/${img}.jpg`} alt="" className="h-28 w-full rounded-2xl object-cover" />
+              <img key={img} src={`/hero/${img}.jpg`} alt="" className="h-28 w-full rounded-2xl object-cover" />
             ))}
           </div>
         </div>

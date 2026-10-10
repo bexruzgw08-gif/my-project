@@ -62,10 +62,10 @@ function Hero() {
         {/* Product collage */}
         <div className="relative mx-auto hidden w-full max-w-[520px] sm:block" aria-hidden>
           <div className="grid grid-cols-2 gap-4">
-            <img src="/seed-images/camera-1.jpg" alt="" className="h-56 w-full rounded-3xl object-cover shadow-lift lg:h-64" />
-            <img src="/seed-images/campingtent-1.jpg" alt="" className="mt-10 h-56 w-full rounded-3xl object-cover shadow-lift lg:h-64" />
-            <img src="/seed-images/drill-1.jpg" alt="" className="-mt-6 h-48 w-full rounded-3xl object-cover shadow-lift lg:h-52" />
-            <img src="/seed-images/bike-1.jpg" alt="" className="mt-4 h-48 w-full rounded-3xl object-cover shadow-lift lg:h-52" />
+            <img src="/hero/camera-1.jpg" alt="" className="h-56 w-full rounded-3xl object-cover shadow-lift lg:h-64" />
+            <img src="/hero/campingtent-1.jpg" alt="" className="mt-10 h-56 w-full rounded-3xl object-cover shadow-lift lg:h-64" />
+            <img src="/hero/drill-1.jpg" alt="" className="-mt-6 h-48 w-full rounded-3xl object-cover shadow-lift lg:h-52" />
+            <img src="/hero/bike-1.jpg" alt="" className="mt-4 h-48 w-full rounded-3xl object-cover shadow-lift lg:h-52" />
           </div>
           <div className="absolute -left-6 top-1/2 flex -translate-y-1/2 items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 shadow-pop">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-soft text-primary">
