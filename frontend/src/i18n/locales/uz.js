@@ -67,6 +67,9 @@ export default {
     feature3: 'Garov alohida ko‘rsatiladi',
   },
   home: {
+    memberHello: 'Salom, {{name}}!',
+    memberSubtitle: 'Bugun nima kerak? Qidiring yoki o‘z buyumingizni ijaraga bering.',
+    memberVerify: 'E’lon joylash va ijara so‘rash uchun shaxsingizni tasdiqlang (demo, 1 daqiqa).',
     searchTitle: 'Nima kerak?',
     searchSubtitle: 'Nomi, tavsifi, kategoriyasi yoki joylashuvi bo‘yicha qidiring',
     popular: 'Ko‘p qidiriladi:',

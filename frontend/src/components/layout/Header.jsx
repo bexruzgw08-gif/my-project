@@ -209,7 +209,7 @@ export default function Header() {
         <div className="ml-auto flex items-center gap-0.5 sm:gap-1">
           <IconLink to="/dashboard/favorites" label={t('nav.favorites')} icon={Heart} badge={favCount} />
           <IconLink to="/dashboard/requests" label={t('nav.myRequests')} icon={LayoutList} />
-          <Button to="/listings/new" size="sm" className="ml-1 hidden sm:inline-flex">
+          <Button to="/listings/new" size="sm" className="ml-1 max-sm:hidden">
             <Plus className="h-4 w-4" /> {t('nav.rentOut')}
           </Button>
           {user ? (

@@ -37,6 +37,13 @@ MVP complete and running locally. Frontend: http://localhost:5173 · Backend: ht
 - Vite picked up an unrelated `postcss.config.js` from a parent folder → pinned inline PostCSS config.
 - Added a page-level error boundary so a render error never blanks the whole app.
 
+## Update — personalised homepage
+
+- Guests (first visit) keep the full marketing homepage: large hero, search block, category cards, "How it works", owner promotion.
+- Signed-in users get a compact personal homepage: small greeting banner with quick actions, live counters (new incoming requests, awaiting reply, upcoming, active listings) from the API, verification reminder when not verified, compact category chips, then featured items and category rows ("How it works" hidden).
+- Fixed: the header "Rent out" button was visible on phones (Tailwind `hidden` vs `inline-flex` order) — now `max-sm:hidden`.
+- Verified in Chrome (desktop 1440 px and mobile 390 px): no console errors, 0 px horizontal overflow.
+
 ## Known problems / limitations
 
 - MongoDB Atlas is **not connected** — no credentials were provided; the app runs on the local development database. Set `MONGODB_URI` in `backend/.env` to switch.

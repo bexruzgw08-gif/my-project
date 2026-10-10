@@ -1,10 +1,26 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight, CalendarDays, Check, HandCoins, Handshake, PackageSearch, Plus, Search, ShieldCheck } from 'lucide-react';
+import {
+  ArrowRight,
+  CalendarClock,
+  CalendarDays,
+  Check,
+  ClipboardList,
+  HandCoins,
+  Handshake,
+  Inbox,
+  Package,
+  PackageSearch,
+  Plus,
+  Search,
+  ShieldAlert,
+  ShieldCheck,
+} from 'lucide-react';
 import { api } from '../lib/api.js';
 import { useApi } from '../lib/useApi.js';
 import { catName } from '../lib/format.js';
-import { Button, ErrorState, SectionHeader, Skeleton } from '../components/ui/index.jsx';
+import { Avatar, Button, ErrorState, SectionHeader, Skeleton } from '../components/ui/index.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 import { CategoryIcon, ProductGrid } from '../components/product/index.jsx';
 import SearchBar from '../components/layout/SearchBar.jsx';
 import { errorMessage } from '../lib/api.js';
@@ -199,8 +215,98 @@ function OwnerPromo() {
   );
 }
 
+/** Compact, personal banner for signed-in users (replaces the big marketing hero). */
+function MemberHero({ user }) {
+  const { t } = useTranslation();
+  const { data, loading } = useApi(() => api.get('/users/me/dashboard'), [user._id]);
+  const c = data?.counts || {};
+  const stats = [
+    { key: 'statIncoming', value: c.incomingPending, to: '/dashboard/incoming', icon: Inbox, highlight: c.incomingPending > 0 },
+    { key: 'statMyPending', value: c.myPending, to: '/dashboard/requests?tab=pending', icon: ClipboardList },
+    { key: 'statUpcoming', value: c.upcoming, to: '/dashboard/requests?tab=upcoming', icon: CalendarClock },
+    { key: 'statListings', value: c.activeListings, to: '/dashboard/listings', icon: Package },
+  ];
+  const firstName = user.fullName.replace(/\(.*?\)/g, '').trim().split(/\s+/)[0];
+  const verified = user.verificationStatus === 'verified';
+
+  return (
+    <section className="container-page pt-6 sm:pt-8">
+      <div className="relative overflow-hidden rounded-[28px] bg-primary px-5 py-6 text-white sm:px-8 sm:py-7">
+        <div className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-accent/40 blur-3xl" />
+        <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex items-center gap-4">
+            <Avatar name={user.fullName} src={user.avatarUrl} size={52} className="ring-4 ring-white/15" />
+            <div>
+              <h1 className="text-2xl font-extrabold tracking-tight sm:text-[28px]">{t('home.memberHello', { name: firstName })}</h1>
+              <p className="mt-0.5 text-white/75">{t('home.memberSubtitle')}</p>
+            </div>
+          </div>
+          <div className="flex shrink-0 gap-2">
+            <Button to="/catalog" variant="white" size="sm">
+              <Search className="h-4 w-4" /> {t('hero.findItem')}
+            </Button>
+            <Button to="/listings/new" size="sm" className="bg-white/15 text-white hover:bg-white/25">
+              <Plus className="h-4 w-4" /> {t('hero.rentOut')}
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        {stats.map((s) => (
+          <Link
+            key={s.key}
+            to={s.to}
+            className={`flex items-center gap-3 rounded-2xl border p-3.5 transition hover:-translate-y-0.5 hover:shadow-lift ${
+              s.highlight ? 'border-accent bg-accent-soft' : 'border-line bg-white shadow-card'
+            }`}
+          >
+            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${s.highlight ? 'bg-accent text-white' : 'bg-primary-soft text-primary'}`}>
+              <s.icon className="h-5 w-5" />
+            </span>
+            <span className="min-w-0">
+              {loading ? <Skeleton className="h-6 w-8" /> : <span className="block text-xl font-extrabold leading-none">{s.value ?? 0}</span>}
+              <span className="mt-1 block truncate text-xs text-muted sm:text-sm">{t(`dashboard.${s.key}`)}</span>
+            </span>
+          </Link>
+        ))}
+      </div>
+
+      {!verified && (
+        <div className="mt-4 flex flex-col gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="flex items-center gap-2 text-sm font-semibold text-amber-900">
+            <ShieldAlert className="h-5 w-5 shrink-0" /> {t('home.memberVerify')}
+          </p>
+          <Button to="/verification" size="sm" variant="outline">
+            {t('booking.verifyNow')}
+          </Button>
+        </div>
+      )}
+    </section>
+  );
+}
+
+/** Horizontal, compact category chips for returning users. */
+function CategoryChips({ categories }) {
+  if (!categories.length) return null;
+  return (
+    <section className="container-page mt-8">
+      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
+        {categories.map((c) => (
+          <Link key={c._id} to={`/catalog?category=${c.slug}`} className="chip shrink-0 py-2">
+            <CategoryIcon name={c.icon} className="h-4 w-4 text-primary" />
+            {catName(c)}
+            <span className="text-xs text-muted">{c.productCount}</span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const cats = useApi(() => api.get('/categories'), []);
   const featured = useApi(() => api.get('/products', { params: { sort: 'popular', limit: 48 } }), []);
   const categories = cats.data?.items || [];
@@ -208,17 +314,26 @@ export default function Home() {
 
   return (
     <>
-      <Hero />
-      <SearchSection />
+      {user ? (
+        <>
+          <MemberHero user={user} />
+          {!cats.error && <CategoryChips categories={categories} />}
+        </>
+      ) : (
+        <>
+          <Hero />
+          <SearchSection />
+        </>
+      )}
       {cats.error ? (
         <div className="container-page mt-10">
           <ErrorState message={errorMessage(cats.error)} onRetry={cats.reload} />
         </div>
       ) : (
-        <Categories categories={categories} loading={cats.loading} />
+        !user && <Categories categories={categories} loading={cats.loading} />
       )}
 
-      <section className="container-page mt-16">
+      <section className={`container-page ${user ? 'mt-10' : 'mt-16'}`}>
         <SectionHeader
           title={t('home.featuredTitle')}
           subtitle={t('home.featuredSubtitle')}
@@ -241,7 +356,7 @@ export default function Home() {
         ))}
       </section>
 
-      <HowItWorks />
+      {!user && <HowItWorks />}
       <OwnerPromo />
     </>
   );

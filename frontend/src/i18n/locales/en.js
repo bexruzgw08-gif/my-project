@@ -67,6 +67,9 @@ export default {
     feature3: 'Deposit shown separately',
   },
   home: {
+    memberHello: 'Hi, {{name}}!',
+    memberSubtitle: 'What do you need today? Search, or rent out something of your own.',
+    memberVerify: 'Verify your identity to post listings and request rentals (demo, takes a minute).',
     searchTitle: 'What do you need?',
     searchSubtitle: 'Search by name, description, category or location',
     popular: 'Popular:',
