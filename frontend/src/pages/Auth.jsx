@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +6,7 @@ import { Check, Eye, EyeOff, Info } from 'lucide-react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import { LANGUAGES } from '../i18n/index.js';
-import { errorMessage, fieldErrors } from '../lib/api.js';
+import { api, errorMessage, fieldErrors, unwrap } from '../lib/api.js';
 import { Button, Field, Logo, PageLoader } from '../components/ui/index.jsx';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -72,6 +72,12 @@ export function Login() {
   const from = location.state?.from || '/';
   const [serverError, setServerError] = useState('');
   const authingRef = useRef(false);
+  const [demoAvailable, setDemoAvailable] = useState(false);
+  useEffect(() => {
+    unwrap(api.get('/health'))
+      .then((d) => setDemoAvailable(Boolean(d.demoAccounts)))
+      .catch(() => {});
+  }, []);
   const {
     register,
     handleSubmit,
@@ -130,6 +136,7 @@ export function Login() {
           {t('nav.register')}
         </Link>
       </p>
+      {demoAvailable && (
       <button
         type="button"
         onClick={() => {
@@ -140,6 +147,7 @@ export function Login() {
       >
         <span className="font-bold text-ink">{t('auth.demoHint')}</span> aziz.demo@kerakbolsa.uz / Demo12345
       </button>
+      )}
     </AuthShell>
   );
 }

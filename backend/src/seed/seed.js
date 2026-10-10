@@ -24,20 +24,34 @@ async function upsertCategories() {
   return map;
 }
 
-/** Removes previously seeded demo users/products (and their related records). Real data is untouched. */
-async function removeDemoData() {
+/**
+ * Removes seeded demo users/products and everything that references them
+ * (bookings, favourites, notifications, verifications). Categories and real data are kept.
+ */
+export async function removeDemoData() {
   const users = await User.find({ isDemo: true }).select('_id').lean();
   const userIds = users.map((u) => u._id);
   const products = await Product.find({ isDemo: true }).select('_id').lean();
   const productIds = products.map((p) => p._id);
-  await Promise.all([
-    Booking.deleteMany({ $or: [{ product: { $in: productIds } }, { renter: { $in: userIds } }] }),
+  const bookings = await Booking.find({
+    $or: [{ product: { $in: productIds } }, { renter: { $in: userIds } }, { owner: { $in: userIds } }],
+  })
+    .select('_id')
+    .lean();
+  const bookingIds = bookings.map((b) => b._id);
+
+  const [b, f, n] = await Promise.all([
+    Booking.deleteMany({ _id: { $in: bookingIds } }),
     Favorite.deleteMany({ $or: [{ product: { $in: productIds } }, { user: { $in: userIds } }] }),
-    Notification.deleteMany({ user: { $in: userIds } }),
+    // Includes real users' notifications that point at demo listings or bookings.
+    Notification.deleteMany({
+      $or: [{ user: { $in: userIds } }, { 'data.productId': { $in: productIds } }, { 'data.bookingId': { $in: bookingIds } }],
+    }),
     Verification.deleteMany({ user: { $in: userIds } }),
   ]);
-  await Product.deleteMany({ isDemo: true });
-  await User.deleteMany({ isDemo: true });
+  const p = await Product.deleteMany({ _id: { $in: productIds } });
+  const u = await User.deleteMany({ _id: { $in: userIds } });
+  return { users: u.deletedCount, products: p.deletedCount, bookings: b.deletedCount, favorites: f.deletedCount, notifications: n.deletedCount };
 }
 
 export async function seedAll() {

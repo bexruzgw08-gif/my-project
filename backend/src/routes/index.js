@@ -15,6 +15,7 @@ import * as notifications from '../controllers/notification.controller.js';
 import * as verification from '../controllers/verification.controller.js';
 import * as uploads from '../controllers/upload.controller.js';
 import { dbMode } from '../config/db.js';
+import { User } from '../models/index.js';
 import { storageMode, MAX_IMAGE_BYTES } from '../services/storage.service.js';
 
 const router = Router();
@@ -28,12 +29,15 @@ const upload = multer({
 });
 
 // ---- Health ----
-router.get('/health', (_req, res) => {
+router.get('/health', async (_req, res) => {
+  const connected = mongoose.connection.readyState === 1;
   res.json({
     success: true,
     data: {
       status: 'ok',
-      database: { mode: dbMode, connected: mongoose.connection.readyState === 1 },
+      database: { mode: dbMode, connected },
+      // Lets the login page show the demo-account hint only while demo accounts exist.
+      demoAccounts: connected ? Boolean(await User.exists({ isDemo: true })) : false,
       imageStorage: storageMode(),
       time: new Date().toISOString(),
     },

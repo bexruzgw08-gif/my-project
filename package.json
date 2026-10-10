@@ -10,6 +10,7 @@
     "dev:frontend": "npm --prefix frontend run dev",
     "start:backend": "npm --prefix backend start",
     "seed": "npm --prefix backend run seed",
+    "demo:clear": "npm --prefix backend run demo:clear --",
     "test": "npm --prefix backend test",
     "build": "npm --prefix frontend run build"
   },

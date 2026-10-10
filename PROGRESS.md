@@ -44,9 +44,15 @@ MVP complete and running locally. Frontend: http://localhost:5173 · Backend: ht
 - Fixed: the header "Rent out" button was visible on phones (Tailwind `hidden` vs `inline-flex` order) — now `max-sm:hidden`.
 - Verified in Chrome (desktop 1440 px and mobile 390 px): no console errors, 0 px horizontal overflow.
 
+## Update — MongoDB Atlas & demo cleanup
+
+- MongoDB Atlas connected (`/api/health` → `"mode": "atlas"`); categories and demo data seeded into Atlas; register/login verified against Atlas.
+- `npm run demo:clear` (dry run) / `npm run demo:clear -- --yes` removes demo users, listings and every linked booking, favourite, notification and verification; categories and real data are kept. Demo data is **kept for now** for the hackathon presentation.
+- Login page shows the demo-account hint only while demo accounts exist (`demoAccounts` flag in `/api/health`).
+- New test `demo-clear.test.js`: **33/33 tests pass**.
+
 ## Known problems / limitations
 
-- MongoDB Atlas is **not connected** — no credentials were provided; the app runs on the local development database. Set `MONGODB_URI` in `backend/.env` to switch.
 - Cloudinary not configured — uploads stored locally in `backend/uploads`.
 - Identity verification is simulated (clearly labelled DEMO).
 - No online payment, reviews or chat (out of MVP scope).

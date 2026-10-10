@@ -109,6 +109,15 @@ On first start with an empty database the backend seeds 6 categories, 4 demo own
 npm run seed
 ```
 
+**Removing the demo data** (e.g. before going live with real users):
+
+```bash
+npm run demo:clear            # dry run: only shows how many demo records exist
+npm run demo:clear -- --yes   # deletes demo users + listings and everything linked to them
+```
+
+Categories and all real users/listings are kept; the login page stops showing the demo-account hint automatically. `npm run seed` brings the demo data back.
+
 Demo login (verified): `aziz.demo@kerakbolsa.uz` / `Demo12345` (also `malika.demo@…`, `jasur.demo@…`, `nodira.demo@…`, same password).
 Demo photos are openly licensed images from Openverse; author and licence are shown on each product page and listed in `backend/src/seed/images/credits.json`.
 

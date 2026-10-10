@@ -9,6 +9,7 @@
     "dev": "node --watch-path=src src/server.js",
     "start": "node src/server.js",
     "seed": "node src/seed/run.js",
+    "demo:clear": "node src/seed/clear.js",
     "test": "node --test --test-concurrency=1 \"tests/**/*.test.js\""
   },
   "engines": {
