@@ -40,13 +40,17 @@ function ScrollToTop() {
 
 export default function Layout() {
   const { pathname } = useLocation();
+  // Dashboard tabs animate their own content, so the whole dashboard is not re-entered on every tab.
+  const transitionKey = pathname.startsWith('/dashboard') ? '/dashboard' : pathname;
   return (
     <div className="flex min-h-screen flex-col">
       <ScrollToTop />
       <Header />
       <main className="flex-1">
         <PageErrorBoundary resetKey={pathname}>
-          <Outlet />
+          <div key={transitionKey} className="animate-page-in">
+            <Outlet />
+          </div>
         </PageErrorBoundary>
       </main>
       <Footer />

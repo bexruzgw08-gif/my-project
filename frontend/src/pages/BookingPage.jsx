@@ -161,8 +161,9 @@ export default function BookingPage() {
     return (
       <div className="container-page max-w-xl py-16">
         <div className="card animate-slide-up p-8 text-center">
-          <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-accent text-white">
-            <CheckCircle2 className="h-9 w-9" />
+          <span className="relative mx-auto flex h-16 w-16 animate-pop items-center justify-center rounded-full bg-accent text-white [animation-delay:150ms]">
+            <span className="absolute inset-0 animate-ping rounded-full bg-accent/40 [animation-iteration-count:2]" />
+            <CheckCircle2 className="relative h-9 w-9" />
           </span>
           <h1 className="mt-5 text-2xl font-extrabold">{t('booking.successTitle')}</h1>
           <p className="mt-2 text-muted">{t('booking.successText')}</p>

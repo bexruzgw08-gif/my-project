@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import {
@@ -34,6 +34,7 @@ import { useFavorites } from '../../context/FavoritesContext.jsx';
 import { Avatar, Badge, Button, ConfirmDialog, EmptyState, ErrorState, Field, Skeleton } from '../../components/ui/index.jsx';
 import { ProductGrid, ProductImage } from '../../components/product/index.jsx';
 import BookingCard from './BookingCard.jsx';
+import { CountUp } from '../../components/motion.jsx';
 
 const NAV = [
   { to: '', end: true, icon: LayoutDashboard, key: 'overview' },
@@ -95,14 +96,21 @@ function Overview() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        {stats.map((s) => (
+        {stats.map((s, i) => (
           <Link
             key={s.key}
             to={`/dashboard/${s.to}`}
-            className={`rounded-2xl border p-4 transition hover:-translate-y-0.5 hover:shadow-lift ${s.highlight ? 'border-accent bg-accent-soft' : 'border-line bg-white shadow-card'}`}
+            style={{ animationDelay: `${i * 60}ms` }}
+            className={`animate-page-in rounded-2xl border p-4 transition duration-300 hover:-translate-y-1 hover:shadow-lift ${s.highlight ? 'border-accent bg-accent-soft' : 'border-line bg-white shadow-card'}`}
           >
             <s.icon className="h-5 w-5 text-primary" />
-            {loading ? <Skeleton className="mt-3 h-7 w-10" /> : <p className="mt-3 text-2xl font-extrabold">{s.value ?? 0}</p>}
+            {loading ? (
+              <Skeleton className="mt-3 h-7 w-10" />
+            ) : (
+              <p className="mt-3 text-2xl font-extrabold">
+                <CountUp value={s.value ?? 0} />
+              </p>
+            )}
             <p className="text-sm text-muted">{t(`dashboard.${s.key}`)}</p>
           </Link>
         ))}
@@ -526,6 +534,7 @@ function SettingsPage() {
 export default function Dashboard() {
   const { t } = useTranslation();
   const { user } = useAuth();
+  const location = useLocation();
   return (
     <div className="container-page py-8">
       <div className="mb-6 flex items-center gap-4">
@@ -552,7 +561,7 @@ export default function Dashboard() {
             </NavLink>
           ))}
         </nav>
-        <section className="min-w-0">
+        <section key={location.pathname} className="min-w-0 animate-page-in">
           <Routes>
             <Route index element={<Overview />} />
             <Route path="listings" element={<MyListings />} />

@@ -5,14 +5,14 @@ import { useTranslation } from 'react-i18next';
 import { initials } from '../../lib/format.js';
 
 const VARIANTS = {
-  primary: 'bg-primary text-white hover:bg-primary-dark shadow-sm',
-  accent: 'bg-accent text-white hover:brightness-95 shadow-sm',
+  primary: 'bg-primary text-white hover:bg-primary-dark shadow-sm hover:-translate-y-0.5 hover:shadow-lift',
+  accent: 'bg-accent text-white hover:brightness-95 shadow-sm hover:-translate-y-0.5 hover:shadow-lift',
   outline: 'border border-line bg-white text-ink hover:border-primary/50 hover:text-primary',
   ghost: 'text-ink hover:bg-sand',
   soft: 'bg-primary-soft text-primary hover:bg-accent-soft',
   danger: 'bg-danger text-white hover:brightness-95',
   'danger-outline': 'border border-danger/30 bg-white text-danger hover:bg-danger/5',
-  white: 'bg-white text-primary hover:bg-cream shadow-sm',
+  white: 'bg-white text-primary hover:bg-cream shadow-sm hover:-translate-y-0.5 hover:shadow-lift',
 };
 const SIZES = {
   sm: 'h-9 px-3.5 text-sm gap-1.5 rounded-xl',
@@ -22,7 +22,7 @@ const SIZES = {
 };
 
 export function Button({ as, to, variant = 'primary', size = 'md', loading, className = '', children, disabled, ...props }) {
-  const cls = `inline-flex select-none items-center justify-center font-semibold transition active:scale-[0.98] disabled:pointer-events-none disabled:opacity-55 ${VARIANTS[variant]} ${SIZES[size]} ${className}`;
+  const cls = `inline-flex select-none items-center justify-center font-semibold transition duration-200 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-55 ${VARIANTS[variant]} ${SIZES[size]} ${className}`;
   const content = (
     <>
       {loading && <LoaderCircle className="h-4 w-4 animate-spin" />}

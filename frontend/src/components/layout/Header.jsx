@@ -200,9 +200,20 @@ export default function Header() {
   const { count: favCount } = useFavorites();
   const { pathname } = useLocation();
   const unread = useUnreadCount(user, pathname);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-cream/90 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-40 border-b bg-cream/90 backdrop-blur-md transition-shadow duration-300 ${
+        scrolled ? 'border-line shadow-[0_8px_24px_-16px_rgb(32_39_34/0.35)]' : 'border-line/80'
+      }`}
+    >
       <div className="container-page flex h-16 items-center gap-3 lg:h-[72px] lg:gap-5">
         <Logo />
         <SearchBar className="hidden flex-1 md:block lg:max-w-xl" />

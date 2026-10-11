@@ -5,6 +5,7 @@ import { Bike, Camera, ChevronLeft, ChevronRight, Hammer, Heart, ImageOff, MapPi
 import { useFavorites } from '../../context/FavoritesContext.jsx';
 import { catName, money } from '../../lib/format.js';
 import { Badge, Skeleton } from '../ui/index.jsx';
+import { Reveal } from '../motion.jsx';
 
 const ICONS = { Hammer, Camera, Sprout, PartyPopper, Tent, Bike, Package };
 export function CategoryIcon({ name, className = 'h-5 w-5' }) {
@@ -16,6 +17,7 @@ export function FavoriteButton({ productId, className = '', size = 'md' }) {
   const { isFavorite, toggle } = useFavorites();
   const { t } = useTranslation();
   const active = isFavorite(productId);
+  const [pulse, setPulse] = useState(0);
   const dims = size === 'lg' ? 'h-11 w-11' : 'h-9 w-9';
   return (
     <button
@@ -23,6 +25,7 @@ export function FavoriteButton({ productId, className = '', size = 'md' }) {
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
+        setPulse((n) => n + 1);
         toggle(productId);
       }}
       aria-pressed={active}
@@ -30,7 +33,7 @@ export function FavoriteButton({ productId, className = '', size = 'md' }) {
       title={t(active ? 'product.removeFavorite' : 'product.addFavorite')}
       className={`inline-flex ${dims} items-center justify-center rounded-full border border-white/60 bg-white/90 text-ink shadow-sm backdrop-blur transition hover:scale-105 hover:text-danger ${className}`}
     >
-      <Heart className={`h-[18px] w-[18px] transition ${active ? 'fill-danger text-danger' : ''}`} />
+      <Heart key={pulse} className={`h-[18px] w-[18px] transition ${active ? 'fill-danger text-danger' : ''} ${pulse ? 'animate-pop' : ''}`} />
     </button>
   );
 }
@@ -71,7 +74,7 @@ export function ProductCard({ product }) {
   return (
     <Link
       to={`/products/${product._id}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition duration-200 hover:-translate-y-0.5 hover:shadow-lift"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-lift"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-sand">
         <ProductImage src={product.coverImage} alt={product.title} className="h-full w-full transition duration-500 group-hover:scale-[1.04]" />
@@ -128,8 +131,10 @@ export function ProductGrid({ products, loading, skeletons = 8, className = '' }
   }
   return (
     <div className={cls}>
-      {products.map((p) => (
-        <ProductCard key={p._id} product={p} />
+      {products.map((p, i) => (
+        <Reveal key={p._id} delay={(i % 4) * 80}>
+          <ProductCard product={p} />
+        </Reveal>
       ))}
     </div>
   );
@@ -144,7 +149,7 @@ export function ImageGallery({ images = [], title, initialIndex = 0, badges }) {
   return (
     <div className="space-y-3">
       <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-line bg-sand">
-        <ProductImage src={images[index]?.url} alt={title} className="h-full w-full" />
+        <ProductImage key={index} src={images[index]?.url} alt={title} className="h-full w-full animate-fade-in" />
         {badges && <div className="absolute left-4 top-4 flex gap-2">{badges}</div>}
         {count > 1 && (
           <>

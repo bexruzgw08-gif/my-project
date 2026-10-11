@@ -23,6 +23,49 @@
   --animate-fade-in: fade-in 0.25s ease-out both;
   --animate-slide-up: slide-up 0.3s ease-out both;
   --animate-shimmer: shimmer 1.4s linear infinite;
+  /* Entrance animations use `backwards` fill: once finished they leave no transform behind,
+     so position:fixed children (modals, drawers) stay relative to the viewport. */
+  --animate-page-in: page-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  --animate-rise: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  --animate-pop: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-blob: blob 16s ease-in-out infinite;
+  --animate-wiggle: wiggle 0.55s ease-in-out;
+  --animate-wave: wave 2.4s ease-in-out 0.6s 2;
+
+  @keyframes page-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(105%); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes pop {
+    0% { opacity: 0; transform: scale(0.6); }
+    70% { opacity: 1; transform: scale(1.08); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-30px, 20px) scale(1.08); }
+    66% { transform: translate(20px, -15px) scale(0.95); }
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-12deg) scale(1.08); }
+    75% { transform: rotate(10deg) scale(1.08); }
+  }
+  @keyframes wave {
+    0%, 60%, 100% { transform: rotate(0); }
+    10%, 30% { transform: rotate(16deg); }
+    20%, 40% { transform: rotate(-10deg); }
+  }
 
   @keyframes fade-in {
     from { opacity: 0; }
@@ -84,6 +127,47 @@
     background: linear-gradient(90deg, #ece9df 0px, #f5f3ec 160px, #ece9df 320px);
     background-size: 800px 100%;
     @apply animate-shimmer rounded-xl;
+  }
+}
+
+/* ---------- Scroll-reveal (toggled by <Reveal />) ---------- */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-up {
+  transform: translateY(28px);
+}
+.reveal-left {
+  transform: translateX(-32px);
+}
+.reveal-right {
+  transform: translateX(32px);
+}
+.reveal-scale {
+  transform: scale(0.94);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respect users who prefer less motion: show everything, no animation. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 
